@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+*.ipch
+*.db
+*.db-shm
+*.opendb
+*.db-wal
+.vs/DestinyIslands/v16/.suo
+*.log
+*.recipe
+*.ilk
+Debug/*
+Release/*
+Debug/DestinyIslands.tlog/CL.command.1.tlog

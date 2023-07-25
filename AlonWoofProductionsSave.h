@@ -1,0 +1,30 @@
+#pragma once
+#ifndef _ALONWOOFPRODUCTIONSSAVE_H_
+#define _ALONWOOFPRODUCTIONSSAVE_H_
+
+#define ALONWOOFMAGIC 0x52504C41
+#define MOD_MAJOR_VERSION 0
+#define MOD_MINOR_VERSION 7
+
+#include <Windows.h>
+#include <string>
+
+using namespace std;
+
+// A way to keep track of my mods.
+// Why? It's a secret surprise for later~ 
+
+void incrementVisitCount();
+void writeModSaveFile(string filename);
+
+typedef struct AlonWoofSaveData
+{
+	int magicNumber;
+	char versionMajor;
+	char versionMinor;
+	int numberVisits;
+};
+
+
+
+#endif
