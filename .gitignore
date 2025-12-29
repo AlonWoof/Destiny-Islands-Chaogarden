@@ -42,3 +42,7 @@
 Debug/*
 Release/*
 Debug/DestinyIslands.tlog/CL.command.1.tlog
+*.vsidx
+/.vs
+*.tlog
+/DestinyIslands/Release

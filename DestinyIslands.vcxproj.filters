@@ -39,6 +39,9 @@
     <ClCompile Include="AlonWoofProductionsSave.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="di_spring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="di_waterfall.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files\audio</Filter>
     </ClInclude>
     <ClInclude Include="AlonWoofProductionsSave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="di_spring.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

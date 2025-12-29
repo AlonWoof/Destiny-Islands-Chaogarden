@@ -35,7 +35,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -73,14 +73,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Sonic Adventure DX\mods\DestinyIslands</OutDir>
-    <IncludePath>C:\Users\Jenny\Documents\Project\SADX\sadx-mod-loader\extlib\bass;C:\Users\Jenny\Documents\Project\SADX\sadx-mod-loader\SADXModLoader\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Jenny\Documents\Project\SADX\sadx-mod-loader\extlib\bass;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\extlib\bass;C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\SADXModLoader\include;C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\mod-loader-common\ModLoaderCommon;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\extlib\bass;C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\mod-loader-common\ModLoaderCommon\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Sonic Adventure DX\mods\DestinyIslands</OutDir>
-    <IncludePath>C:\Users\Jenny\Documents\Project\SADX\sadx-mod-loader\extlib\bass;C:\Users\Jenny\Documents\Project\SADX\sadx-mod-loader\SADXModLoader\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Jenny\Documents\Project\SADX\sadx-mod-loader\extlib\bass;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\extlib\bass;C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\SADXModLoader\include;C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\libmodutils;C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\mod-loader-common\ModLoaderCommon;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\extlib\bass;C:\Users\Jennifer\Documents\Project\SADX\sadx-mod-loader\bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -98,7 +98,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>bass.lib;bass_vgmstream.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>bass.lib;bass_vgmstream.lib;ModLoaderCommon.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,7 +115,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>bass.lib;bass_vgmstream.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>bass.lib;bass_vgmstream.lib;libmodutils.lib;ModLoaderCommon.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="AlonWoofProductionsSave.cpp" />
     <ClCompile Include="destinyIslands_sfx.cpp" />
+    <ClCompile Include="di_spring.cpp" />
     <ClCompile Include="HelperFunctions.cpp" />
     <ClCompile Include="DestinyIslands.cpp" />
     <ClCompile Include="rd_destinyislands.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="di_landtable.h" />
     <ClInclude Include="di_ripple.h" />
     <ClInclude Include="di_sky.h" />
+    <ClInclude Include="di_spring.h" />
     <ClInclude Include="di_water.h" />
     <ClInclude Include="di_waterfall.h" />
     <ClInclude Include="di_waterflow.h" />

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33214.272
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DestinyIslands", "DestinyIslands.vcxproj", "{B6D7E897-E911-4050-B488-16F663F14906}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SADXModLoader", "..\..\sadx-mod-loader\SADXModLoader\SADXModLoader.vcxproj", "{B537B54A-67A7-4CD8-9679-457E498E592F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SADXModLoader", "..\sadx-mod-loader\SADXModLoader\SADXModLoader.vcxproj", "{B537B54A-67A7-4CD8-9679-457E498E592F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

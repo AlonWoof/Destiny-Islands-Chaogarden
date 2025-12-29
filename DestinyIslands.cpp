@@ -3,10 +3,13 @@
 #include "HelperFunctions.h"
 #include "rd_destinyislands.h"
 #include "AlonWoofProductionsSave.h"
+#include "IniFile.hpp"
 
 MusicInfo bgm_DestinyIslands = { "DestinyIslands", 1 };
+MusicInfo bgm_DestinyIslands_orig = { "DestinyIslands_orig", 1 };
 int MusicID_DestinyIslands = 0;
 
+bool useOrigMusic = false;
 
 extern "C"
 {
@@ -14,11 +17,16 @@ extern "C"
 
 	__declspec(dllexport) void __cdecl Init(const char* path, const HelperFunctions& helperFunctions)
 	{
+		const IniFile* config = new IniFile(std::string(path) + "\\config.ini");
+		useOrigMusic = config->getBool("Settings", "useOrigMusic", false);
+
 		DI_WriteFunctions();
 		DI_InitPositions();
 		
-		MusicID_DestinyIslands = helperFunctions.RegisterMusicFile(bgm_DestinyIslands);
-
+		if(!useOrigMusic)
+			MusicID_DestinyIslands = helperFunctions.RegisterMusicFile(bgm_DestinyIslands);
+		else
+			MusicID_DestinyIslands = helperFunctions.RegisterMusicFile(bgm_DestinyIslands_orig);
 		
 	}
 

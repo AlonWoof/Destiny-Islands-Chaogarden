@@ -24,6 +24,11 @@ FunctionPointer(task*, ALO_CreateGrowTree, (NJS_VECTOR* pos, TREE_SAVE_INFO* pIn
 
 DataArray(Sint32[40], LandAttrEC, 0x33A2CD0, 40);
 
+DataPointer(NJS_MODEL_SADX, model_bane_banebottom_banebottom, 0x8B5C10);
+DataPointer(NJS_OBJECT, object_bane_banebottom_spring, 0x08B5924);
+DataPointer(NJS_OBJECT, object_bane_banebottom_banehead, 0x08B54C4);
+
+
 struct POS_XZ
 {
 	int x;

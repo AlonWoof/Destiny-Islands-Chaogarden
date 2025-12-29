@@ -8,6 +8,7 @@
 #include "di_waterflow.h"
 #include "di_waves.h"
 #include "di_foliage.h"
+#include "di_spring.h"
 #include "sound.h"
 #include "destinyIslands_sfx.h"
 #include "AlonWoofProductionsSave.h"
@@ -24,6 +25,21 @@ NJS_POINT3 OdekakeMachinePos = { -69.0f, 17.0f, 88.0f };
 NJS_POINT3 WarpPos_MR = { 288.0f, 63.87f, -242.62f };
 NJS_POINT3 WarpPos_SS = { 279.0f, 63.87f, -268.78f };
 NJS_POINT3 WarpPos_Quit = { -87.0f, 25.0f, 260.0f };
+
+struct DI_SPRING_ATR
+{
+	NJS_POINT3 pos;
+	float baseForce;
+};
+
+DI_SPRING_ATR SpringPos[] =
+{
+	{{273.0f, 42.5f, -79.4f}, 3.5f},
+	{{-395.5f, 2.4f, -33.12f}, 3.0f},
+	{{152.58f, 86.9f, 72.2f}, 3.0f}
+};
+
+static int nbSpring = SizeOfArray(SpringPos);
 
 AL_ST_POS AL_StartPosDI_DI = { {-142.4f,25.05f,259.8f}, 44431 };
 AL_ST_POS AL_StartPosDI_Warp = { {256.0f, 64.244f, -245.19f}, 29712 };
@@ -597,43 +613,6 @@ void drawDebugSphere(NJS_POINT3 pos)
 	ResetMaterial();
 }
 
-void DILadder_Exec(task* tp)
-{
-	njPrint(NJM_LOCATION(10, 1), "LADDER is alive at X: %f Y: %f Z: %f", tp->twp->pos.x, tp->twp->pos.y, tp->twp->pos.z);
-}
-
-
-//I don't know what the heck I'm doing ugh
-void ObjectDestinyIslandsLadder(task* tp)
-{
-	
-	taskwk* ltwp;
-	taskwk* twp = tp->twp;
-
-	tp->exec = DILadder_Exec;
-
-	task* laddering = CreateChildTask(IM_TASKWK, PathworkLaddering, tp);
-
-	if (laddering)
-	{
-		ltwp = laddering->twp;
-		ltwp->timer.w[0] = (ssStageNumber << 8) | (unsigned __int16)ssActNumber;
-		ltwp->ang.y = twp->ang.y;
-
-		char * memory = (char*)malloc(0x10u);
-
-		ltwp->value.l = (int)memory;
-		twp->timer.l = (int)memory;
-	}
-
-	
-
-	LoopTaskC(tp);
-}
-
-
-
-
 void dbg_drawChaoSpawns()
 {
 	for (int i = 0; i < 16; i++)
@@ -642,14 +621,22 @@ void dbg_drawChaoSpawns()
 	}
 }
 
-task* spring = NULL;
+task* SpringA = NULL;
+task* SpringB = NULL;
 
-
+task* Springs[3];
 
 void setObjects()
 {
 	
 	CreateElementalTask(IM_TASKWK, LEV_2, ambientWaveSound);
+
+	for (int i = 0; i < nbSpring; i++)
+	{
+		task* spring = CreateElementalTask(IM_TASKWK | IM_ANYWK, LEV_3, ObjectSpring_DI);
+		spring->twp->pos = SpringPos[i].pos;
+		spring->awp->work.f[0] = SpringPos[i].baseForce;
+	}
 
 }
 
